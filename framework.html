@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="he" dir="rtl">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>פרטי מסגרת</title>
+  <link rel="stylesheet" href="css/style.css" />
+  <link rel="stylesheet" href="css/framework.css" />
+</head>
+<body>
+
+  <!-- כותרת עליונה עם חזרה + שיתוף -->
+  <header class="detail-header">
+    <div class="detail-header__top">
+      <a href="index.html" class="back-link" aria-label="חזרה לרשימה">
+        &#8594; חזרה לרשימה
+      </a>
+      <button class="share-btn-small" id="share-btn" aria-label="שיתוף">
+        <svg xmlns="http://www.w3.org/2000/svg" width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+          <path d="M4 12v8a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-8"/>
+          <polyline points="16 6 12 2 8 6"/>
+          <line x1="12" y1="2" x2="12" y2="15"/>
+        </svg>
+        <span>שיתוף</span>
+      </button>
+    </div>
+    <h1 class="detail-header__title" id="fw-name">טוען...</h1>
+  </header>
+
+  <main class="detail-main" id="fw-content">
+
+    <!-- 1. פרטי מסגרת -->
+    <section class="detail-section detail-top">
+      <dl class="detail-meta-list">
+        <div class="detail-meta-row">
+          <dt>תחום שיקום</dt>
+          <dd id="fw-category">—</dd>
+        </div>
+        <div class="detail-meta-row">
+          <dt>סוג מסגרת</dt>
+          <dd id="fw-type">—</dd>
+        </div>
+        <div class="detail-meta-row">
+          <dt>מופעל על ידי</dt>
+          <dd id="fw-provider">—</dd>
+        </div>
+      </dl>
+    </section>
+
+    <!-- 2. למי זה מתאים -->
+    <section class="detail-section">
+      <h2 class="detail-section__title">למי זה מתאים</h2>
+      <p class="detail-section__text" id="fw-fit">—</p>
+    </section>
+
+    <!-- 3. מה עושים בפועל -->
+    <section class="detail-section">
+      <h2 class="detail-section__title">מה עושים בפועל</h2>
+      <p class="detail-section__text" id="fw-what-happens">—</p>
+    </section>
+
+    <!-- 4. איך זה עובד -->
+    <section class="detail-section">
+      <h2 class="detail-section__title">איך זה עובד</h2>
+      <p class="detail-section__text" id="fw-how-it-works">—</p>
+    </section>
+
+    <!-- 5. סניפים -->
+    <section class="detail-section">
+      <h2 class="detail-section__title">סניפים</h2>
+      <ul class="branches-list" id="fw-branches">
+        <!-- יוכנס על ידי framework.js -->
+      </ul>
+    </section>
+
+    <!-- 6. תהליך והגשת בקשה (expandable) -->
+    <section class="detail-section">
+      <button
+        class="expandable-toggle"
+        id="process-toggle"
+        aria-expanded="false"
+        aria-controls="process-content"
+      >
+        <span>תהליך והגשת בקשה</span>
+        <span class="expandable-toggle__icon" aria-hidden="true">&#9660;</span>
+      </button>
+      <div class="expandable-content" id="process-content" hidden>
+        <p class="detail-section__text" id="fw-process-info">—</p>
+        <p class="detail-service-code">
+          <span class="detail-service-code__label">קוד שירות:</span>
+          <span id="fw-service-code">—</span>
+        </p>
+      </div>
+    </section>
+
+  </main>
+
+  <script src="js/main.js"></script>
+  <script src="js/framework.js"></script>
+</body>
+</html>

@@ -1,0 +1,341 @@
+/* ============================================================
+   FRAMEWORK DETAIL PAGE – framework.css
+   Builds on top of style.css variables and resets.
+   ============================================================ */
+
+
+/* ---- Header ---- */
+
+.detail-header {
+  background-color: var(--color-primary);
+  color: #ffffff;
+  padding: var(--space-md) var(--space-lg);
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-sm);
+}
+
+.detail-header__top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-sm);
+}
+
+/* Small share button – subtle, in the header */
+.share-btn-small {
+  background-color: rgba(255, 255, 255, 0.18);
+  color: #ffffff;
+  border: 1px solid rgba(255, 255, 255, 0.45);
+  border-radius: var(--radius-pill);
+  padding: 6px 14px;
+  font-size: var(--size-sm);
+  font-family: var(--font-body);
+  font-weight: 600;
+  cursor: pointer;
+  min-height: 36px;
+  white-space: nowrap;
+  -webkit-tap-highlight-color: transparent;
+  flex-shrink: 0;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.share-btn-small:active {
+  opacity: 0.7;
+}
+
+.back-link {
+  color: rgba(255, 255, 255, 0.85);
+  text-decoration: none;
+  font-size: var(--size-md);
+  display: flex;
+  align-items: center;
+  gap: var(--space-xs);
+  min-height: 44px;
+  width: fit-content;
+}
+
+.back-link:active {
+  opacity: 0.7;
+}
+
+.detail-header__title {
+  font-size: var(--size-2xl);
+  font-weight: 700;
+  line-height: 1.25;
+}
+
+
+/* ---- Main layout ---- */
+
+.detail-main {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+  max-width: 540px;
+  margin: 0 auto;
+  padding-bottom: var(--space-xl);
+}
+
+
+/* ---- Sections ---- */
+
+.detail-section {
+  padding: var(--space-lg) var(--space-md);
+  border-bottom: 1px solid var(--color-border);
+}
+
+.detail-section:last-child {
+  border-bottom: none;
+}
+
+.detail-section__title {
+  font-size: var(--size-xl);
+  font-weight: 700;
+  color: var(--color-primary);
+  margin-bottom: var(--space-sm);
+}
+
+.detail-section__text {
+  font-size: var(--size-md);
+  color: var(--color-text);
+  line-height: 1.75;
+}
+
+
+/* ---- Top meta (definition list) ---- */
+
+.detail-top {
+  background-color: var(--color-primary-light);
+}
+
+.detail-meta-list {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-sm);
+}
+
+.detail-meta-row {
+  display: flex;
+  gap: var(--space-sm);
+  font-size: var(--size-md);
+  flex-wrap: wrap;
+}
+
+.detail-meta-row dt {
+  font-weight: 700;
+  color: var(--color-text-muted);
+  flex-shrink: 0;
+}
+
+.detail-meta-row dt::after {
+  content: ':';
+}
+
+.detail-meta-row dd {
+  color: var(--color-text);
+  font-weight: 500;
+}
+
+
+/* ---- Transport & branch ---- */
+
+.detail-transport {
+  font-size: var(--size-md);
+  color: var(--color-text);
+  margin-bottom: var(--space-xs);
+}
+
+.detail-branch {
+  font-size: var(--size-md);
+  color: var(--color-text-muted);
+}
+
+
+/* ---- Branches list ---- */
+
+.branches-list {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-sm);
+}
+
+.branch-item {
+  padding: var(--space-sm) var(--space-md);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-sm);
+  background-color: var(--color-surface);
+  font-size: var(--size-md);
+  line-height: 1.6;
+}
+
+.branch-item--recommended {
+  border-color: var(--color-primary);
+  background-color: var(--color-primary-light);
+}
+
+.branch-item__name {
+  font-weight: 700;
+  display: block;
+}
+
+.branch-item__travel {
+  color: var(--color-text-muted);
+  display: block;
+}
+
+.branch-item__note {
+  color: var(--color-primary);
+  font-weight: 400;
+  font-size: var(--size-sm);
+  display: inline;
+}
+
+.branch-item__details {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  margin-top: var(--space-xs);
+}
+
+.branch-item__address {
+  color: var(--color-text-muted);
+  font-size: var(--size-sm);
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
+
+.branch-item__phone {
+  color: var(--color-primary);
+  font-size: var(--size-sm);
+  font-weight: 600;
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  text-decoration: none;
+}
+
+.branch-item__phone:active {
+  opacity: 0.7;
+}
+
+.branch-item__transport-detail {
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+  margin-top: var(--space-sm);
+  padding-top: var(--space-sm);
+  border-top: 1px dashed var(--color-border);
+}
+
+.branch-item__transport-heading {
+  font-size: var(--size-sm);
+  font-weight: 700;
+  color: var(--color-text);
+  display: block;
+  margin-bottom: 2px;
+}
+
+.branch-item__transport-car,
+.branch-item__transport-line,
+.branch-item__transport-time,
+.branch-item__transport-direct {
+  font-size: var(--size-sm);
+  color: var(--color-text-muted);
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
+
+.branch-item__transport-direct--yes {
+  color: var(--color-primary);
+  font-weight: 600;
+}
+
+
+/* ---- Expandable process section ---- */
+
+.expandable-toggle {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background: none;
+  border: none;
+  padding: 0;
+  font-size: var(--size-lg);
+  font-family: var(--font-body);
+  font-weight: 700;
+  color: var(--color-primary);
+  cursor: pointer;
+  text-align: right;
+  min-height: 44px;
+  -webkit-tap-highlight-color: transparent;
+}
+
+.expandable-toggle__icon {
+  font-size: 14px;
+  transition: transform 0.2s;
+  flex-shrink: 0;
+}
+
+.expandable-toggle[aria-expanded="true"] .expandable-toggle__icon {
+  transform: rotate(180deg);
+}
+
+.expandable-content {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-md);
+  padding-top: var(--space-md);
+}
+
+/* hidden attribute override for smooth show */
+.expandable-content[hidden] {
+  display: none;
+}
+
+.detail-service-code {
+  font-size: var(--size-md);
+  color: var(--color-text-muted);
+  display: flex;
+  gap: var(--space-xs);
+  flex-wrap: wrap;
+}
+
+.detail-service-code__label {
+  font-weight: 700;
+  color: var(--color-text);
+}
+
+
+/* ---- Share section ---- */
+
+.detail-share {
+  display: flex;
+  justify-content: center;
+  border-bottom: none;
+}
+
+.share-btn {
+  padding: 14px 40px;
+  font-size: var(--size-lg);
+  font-family: var(--font-body);
+  font-weight: 700;
+  background-color: var(--color-primary);
+  color: #ffffff;
+  border: none;
+  border-radius: var(--radius-pill);
+  cursor: pointer;
+  min-height: 52px;
+  width: 100%;
+  -webkit-tap-highlight-color: transparent;
+}
+
+.share-btn:active {
+  opacity: 0.85;
+}

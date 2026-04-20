@@ -1,0 +1,177 @@
+/* ============================================================
+   COMPARE PAGE – compare.css
+   Builds on style.css variables.
+   Layout: one topic at a time, both frameworks per topic.
+   ============================================================ */
+
+
+/* ---- Header (reuse from framework.css pattern) ---- */
+
+.compare-header {
+  background-color: var(--color-primary);
+  color: #ffffff;
+  padding: var(--space-md) var(--space-lg);
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-sm);
+}
+
+.compare-header .back-link {
+  color: rgba(255, 255, 255, 0.85);
+  text-decoration: none;
+  font-size: var(--size-md);
+  display: flex;
+  align-items: center;
+  gap: var(--space-xs);
+  min-height: 44px;
+  width: fit-content;
+}
+
+.compare-header .back-link:active {
+  opacity: 0.7;
+}
+
+.compare-header__title {
+  font-size: var(--size-xl);
+  font-weight: 700;
+}
+
+
+/* ---- Main container ---- */
+
+.compare-main {
+  max-width: 540px;
+  margin: 0 auto;
+  padding: var(--space-md) var(--space-md) var(--space-xl);
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-md);
+}
+
+
+/* ---- Framework name badges at the top ---- */
+
+.compare-names {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-md);
+  padding-bottom: var(--space-md);
+  border-bottom: 2px solid var(--color-border);
+}
+
+.compare-name-badge {
+  display: flex;
+  align-items: center;
+  gap: var(--space-sm);
+  font-size: var(--size-lg);
+  font-weight: 700;
+  color: var(--color-text);
+}
+
+.compare-name-badge__dot {
+  width: 14px;
+  height: 14px;
+  border-radius: 50%;
+  flex-shrink: 0;
+}
+
+/* Color A = primary teal, Color B = slate blue (contrast) */
+.fw-a .compare-name-badge__dot { background-color: var(--color-primary); }
+.fw-b .compare-name-badge__dot { background-color: #3a6080; }
+
+
+/* ---- Topic block (one per compared field) ---- */
+
+.compare-topic {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-sm);
+  padding-bottom: var(--space-md);
+  border-bottom: 1px solid var(--color-border);
+}
+
+.compare-topic:last-child {
+  border-bottom: none;
+}
+
+.compare-topic__title {
+  font-size: 12px;
+  font-weight: 700;
+  color: var(--color-text-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+}
+
+/* Each framework's answer within the topic */
+.compare-entry {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  padding: var(--space-sm) var(--space-md);
+  border-radius: var(--radius-sm);
+  border-right: 4px solid transparent;
+}
+
+.compare-entry.fw-a {
+  background-color: var(--color-primary-light);
+  border-right-color: var(--color-primary);
+}
+
+.compare-entry.fw-b {
+  background-color: #e4edf4;
+  border-right-color: #3a6080;
+}
+
+.compare-entry__label {
+  font-size: var(--size-sm);
+  font-weight: 700;
+}
+
+.fw-a .compare-entry__label { color: var(--color-primary); }
+.fw-b .compare-entry__label { color: #3a6080; }
+
+.compare-entry__text {
+  font-size: var(--size-md);
+  color: var(--color-text);
+  line-height: 1.7;
+}
+
+
+/* ---- Not-enough-selected state ---- */
+
+.compare-empty {
+  text-align: center;
+  padding: var(--space-xl) var(--space-md);
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-md);
+  align-items: center;
+}
+
+.compare-empty__icon {
+  font-size: 40px;
+}
+
+.compare-empty__title {
+  font-size: var(--size-lg);
+  font-weight: 700;
+  color: var(--color-text);
+}
+
+.compare-empty__text {
+  font-size: var(--size-md);
+  color: var(--color-text-muted);
+  line-height: 1.7;
+}
+
+.compare-empty__link {
+  display: inline-block;
+  padding: 14px 32px;
+  background-color: var(--color-primary);
+  color: #ffffff;
+  text-decoration: none;
+  border-radius: var(--radius-pill);
+  font-size: var(--size-md);
+  font-weight: 700;
+  min-height: 44px;
+}

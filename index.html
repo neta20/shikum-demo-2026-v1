@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="he" dir="rtl">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>שירותי סל שיקום</title>
+  <link rel="stylesheet" href="css/style.css" />
+</head>
+<body>
+
+  <!-- כותרת עליונה -->
+  <header class="site-header">
+    <h1>שירותי סל שיקום</h1>
+    <p class="subtitle">מצאו את השירות המתאים לכם</p>
+  </header>
+
+  <main>
+
+    <!-- חיפוש -->
+    <section class="search-section">
+      <label for="search-input" class="visually-hidden">חיפוש שירות</label>
+      <input
+        type="search"
+        id="search-input"
+        class="search-input"
+        placeholder="חפשו לפי שם מסגרת..."
+        autocomplete="off"
+      />
+    </section>
+
+    <!-- פילטרים -->
+    <section class="filters-section" aria-label="סינון שירותים">
+      <h2 class="filters-title">סינון לפי</h2>
+
+      <!-- שלב 1: תחום שיקום -->
+      <div class="filter-group">
+        <p class="filter-label">תחום שיקום</p>
+        <div class="filter-chips" id="category-chips">
+          <button class="chip chip--active" data-value="all">הכל</button>
+          <button class="chip" data-value="תעסוקה">תעסוקה</button>
+          <button class="chip" data-value="דיור">דיור</button>
+          <button class="chip" data-value="פנאי">פנאי</button>
+          <button class="chip" data-value="ליווי בהשכלה">ליווי בהשכלה</button>
+          <button class="chip" data-value="תיאום טיפול">תיאום טיפול</button>
+          <button class="chip" data-value="מרכז ייעוץ למשפחות">מרכז ייעוץ למשפחות</button>
+          <button class="chip" data-value="סומכות שיקומית">סומכות שיקומית</button>
+          <button class="chip" data-value="טיפולי שיניים">טיפולי שיניים</button>
+          <button class="chip" data-value="ליווי ושילוב בשירות צבאי/לאומי">ליווי ושילוב בשירות צבאי/לאומי</button>
+        </div>
+      </div>
+
+      <!-- שלב 2: סוג מסגרת -->
+      <div class="filter-group" id="framework-filter-group">
+        <p class="filter-label">סוג מסגרת</p>
+        <p class="filter-helper-text" id="fw-type-placeholder">יש לבחור תחום שיקום כדי לראות סוגי מסגרות</p>
+        <div class="filter-chips" id="framework-chips" hidden>
+          <!-- מוכנס על ידי main.js בהתאם לקטגוריה שנבחרה -->
+        </div>
+      </div>
+
+      <!-- מיקום המשתמש -->
+      <div class="filter-group">
+        <label for="location-input" class="filter-label">מקום מגוריך</label>
+        <div class="location-wrapper">
+          <input
+            type="text"
+            id="location-input"
+            class="location-input"
+            placeholder="הקלידו עיר..."
+            autocomplete="off"
+            aria-autocomplete="list"
+            aria-controls="location-suggestions"
+            aria-expanded="false"
+          />
+          <ul
+            id="location-suggestions"
+            class="autocomplete-list"
+            role="listbox"
+            aria-label="הצעות מיקום"
+          >
+            <!-- פריטים יוצגו כאן על ידי main.js -->
+          </ul>
+        </div>
+        <p class="filter-helper-text">לצורך הצגת קרבה ונגישות למסגרות</p>
+      </div>
+
+    </section>
+
+    <!-- כפתור חיפוש וסינון – מחוץ לשני הסעיפים, מתחתם -->
+    <button class="filter-submit-btn" id="filter-submit-btn">חיפוש וסינון</button>
+
+    <!-- כרטיסי שירות -->
+    <section class="results-section" aria-label="תוצאות חיפוש">
+      <p class="results-count" id="results-count"></p>
+
+      <div class="cards-container" id="cards-container">
+        <!-- כרטיסים יוצגו כאן על ידי main.js -->
+      </div>
+    </section>
+
+  </main>
+
+  <!-- סרגל השוואה (קבוע בתחתית) -->
+  <div class="compare-bar" id="compare-bar" role="region" aria-label="השוואת שירותים" aria-live="polite">
+    <!-- יאוכלס על ידי main.js כשיבחרו פריטים -->
+  </div>
+
+  <script src="js/main.js"></script>
+</body>
+</html>
