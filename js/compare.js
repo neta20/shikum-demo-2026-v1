@@ -9,13 +9,11 @@ const compareMain = document.getElementById('compare-main');
 /* ---- Fields to compare (in display order) ---- */
 
 const COMPARE_FIELDS = [
+  { key: 'category',          label: 'תחום שיקום' },
   { key: 'frameworkType',     label: 'סוג מסגרת' },
   { key: 'provider',          label: 'מופעל על ידי' },
-  { key: 'fit',               label: 'למי זה מתאים' },
-  { key: 'whatHappens',       label: 'מה עושים בפועל' },
-  { key: 'howItWorks',        label: 'איך זה עובד' },
-  { key: 'nearestBranchLabel',label: 'הסניף הקרוב / אזור הליווי' },
-  { key: 'transportSummary',  label: 'נגישות והגעה' }
+  { key: 'short_description', label: 'למי זה מתאים' },
+  { key: 'service_summary',   label: 'תיאור השירות' }
 ];
 
 

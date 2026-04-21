@@ -223,37 +223,71 @@
   opacity: 0.7;
 }
 
-.branch-item__transport-detail {
-  display: flex;
-  flex-direction: column;
-  gap: 3px;
+.branch-transport {
   margin-top: var(--space-sm);
   padding-top: var(--space-sm);
   border-top: 1px dashed var(--color-border);
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-sm);
 }
 
-.branch-item__transport-heading {
+.branch-transport__title {
   font-size: var(--size-sm);
   font-weight: 700;
   color: var(--color-text);
-  display: block;
-  margin-bottom: 2px;
 }
 
-.branch-item__transport-car,
-.branch-item__transport-line,
-.branch-item__transport-time,
-.branch-item__transport-direct {
+.transport-group {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.transport-subtitle {
+  font-size: var(--size-sm);
+  font-weight: 700;
+  color: var(--color-text);
+}
+
+.transport-line {
   font-size: var(--size-sm);
   color: var(--color-text-muted);
-  display: flex;
-  align-items: center;
-  gap: 5px;
 }
 
-.branch-item__transport-direct--yes {
-  color: var(--color-primary);
+.transport-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  padding: 2px 8px;
+  border-radius: var(--radius-pill);
+  font-size: 12px;
   font-weight: 600;
+  background-color: #f1f3f4;
+  color: var(--color-text-muted);
+}
+
+.transport-badge--direct {
+  background-color: #e6f4ea;
+  color: #2d7d46;
+}
+
+.transport-badge--transfer {
+  background-color: #f1f3f4;
+  color: var(--color-text-muted);
+}
+
+.transport-link {
+  font-size: var(--size-sm);
+  font-weight: 600;
+  color: var(--color-primary);
+  text-decoration: none;
+  display: block;
+  margin-top: 2px;
+}
+
+.transport-link:active {
+  opacity: 0.7;
 }
 
 

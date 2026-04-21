@@ -17,42 +17,46 @@ function getFrameworkId() {
 const fw = frameworks.find(function(f) { return f.id === getFrameworkId(); })
         || frameworks[0];
 
+const hasLocation = (localStorage.getItem('userLocation') || '').length > 0;
+
 
 /* ---- Populate text fields ---- */
 
 document.title = fw.name + ' – פרטי מסגרת';
 
-document.getElementById('fw-name').textContent          = fw.name;
-document.getElementById('fw-type').textContent          = fw.frameworkType;
-document.getElementById('fw-provider').textContent      = fw.provider;
-document.getElementById('fw-category').textContent      = fw.category;
-document.getElementById('fw-fit').textContent           = fw.fit;
-document.getElementById('fw-what-happens').textContent  = fw.whatHappens;
-document.getElementById('fw-how-it-works').textContent  = fw.howItWorks;
-document.getElementById('fw-process-info').textContent  = fw.processInfo;
-document.getElementById('fw-service-code').textContent  = fw.serviceCode;
+document.getElementById('fw-name').textContent             = fw.name;
+document.getElementById('fw-type').textContent             = fw.frameworkType;
+document.getElementById('fw-provider').textContent         = fw.provider;
+document.getElementById('fw-category').textContent         = fw.category;
+document.getElementById('fw-short-description').textContent = fw.short_description;
+document.getElementById('fw-service-summary').textContent  = fw.service_summary;
+document.getElementById('fw-process-info').textContent     = fw.processInfo || '—';
+document.getElementById('fw-service-code').textContent     = fw.serviceCode || '—';
 
 
 /* ---- Branches list ---- */
 
 const branchesList = document.getElementById('fw-branches');
 
-fw.branches.forEach(function(branch) {
-  const isRecommended = branch.note && branch.note.includes('מומלץ');
+fw.branches.forEach(function(branch, index) {
+  // Recommended only when user has entered a location
+  var isRecommended = hasLocation && index === 0;
 
   const li = document.createElement('li');
   li.className = 'branch-item' + (isRecommended ? ' branch-item--recommended' : '');
 
-  // Title: name + note inline in parentheses
-  var nameHtml = '<span class="branch-item__name">' + branch.name;
-  if (branch.note) {
-    nameHtml += ' <span class="branch-item__note">(' + branch.note + ')</span>';
+  // City name
+  var nameHtml = '<span class="branch-item__name">' + branch.city;
+  if (isRecommended) {
+    nameHtml += ' <span class="branch-item__note">(מומלץ, הסניף הקרוב אליך)</span>';
   }
   nameHtml += '</span>';
 
-  // Details: address and phone – text and icon as separate children for RTL flex alignment
   var detailsHtml = '';
-  if (branch.address || branch.phone) {
+  var transportHtml = '';
+
+  if (branch.branch_type === 'meeting_place') {
+    // Always show address and phone
     detailsHtml = '<div class="branch-item__details">';
     if (branch.address) {
       detailsHtml += '<span class="branch-item__address"><span aria-hidden="true">📌</span><span>כתובת: ' + branch.address + '</span></span>';
@@ -61,33 +65,78 @@ fw.branches.forEach(function(branch) {
       detailsHtml += '<a class="branch-item__phone" href="tel:' + branch.phone + '"><span aria-hidden="true">📞</span><span>טלפון ליצירת קשר: ' + branch.phone + '</span></a>';
     }
     detailsHtml += '</div>';
-  }
 
-  // Arrival subsection – icon after text so it sits at the visual end in RTL
-  var transportHtml = '';
-  if (branch.transport) {
-    var t = branch.transport;
-    transportHtml = '<div class="branch-item__transport-detail">';
-    transportHtml += '<span class="branch-item__transport-heading">הגעה</span>';
-    if (t.carTime) {
-      transportHtml += '<span class="branch-item__transport-car"><span aria-hidden="true">🚗</span><span>ברכב פרטי: ' + t.carTime + '</span></span>';
+    // Transport only when user has entered a location
+    if (hasLocation && branch.transport_details_full) {
+      // Parse transport_details_full into car and public-transport sections
+      var carText = '';
+      var publicRoute = '';
+      var publicTime = '';
+      var publicDirect = '';
+
+      branch.transport_details_full.split('\n').forEach(function(line) {
+        line = line.trim();
+        if (!line) return;
+        if (line.startsWith('ברכב פרטי:')) {
+          carText = line.replace('ברכב פרטי:', '').trim();
+        } else if (line.startsWith('בתחבורה ציבורית:')) {
+          publicRoute = line.replace('בתחבורה ציבורית:', '').trim();
+        } else if (line.startsWith('זמן הגעה משוער:')) {
+          publicTime = line.replace('זמן הגעה משוער:', '').trim();
+        } else if (line === 'קו ישיר') {
+          publicDirect = 'direct';
+        } else if (line === 'דורש החלפה') {
+          publicDirect = 'transfer';
+        }
+      });
+
+      var wazeUrl = branch.waze_url || ('https://waze.com/ul?q=' + encodeURIComponent(branch.address || '') + '&navigate=yes');
+      var moovitUrl = branch.moovit_url || 'https://moovitapp.com/';
+
+      transportHtml = '<section class="branch-transport">';
+      transportHtml += '<h4 class="branch-transport__title">הגעה</h4>';
+
+      // Car group
+      if (carText) {
+        transportHtml += '<div class="transport-group">';
+        transportHtml += '<div class="transport-subtitle">🚗 ברכב פרטי</div>';
+        transportHtml += '<div class="transport-line">' + carText + '</div>';
+        transportHtml += '<a class="transport-link" href="' + wazeUrl + '" target="_blank" rel="noopener noreferrer">↗ פתיחה ב-Waze</a>';
+        transportHtml += '</div>';
+      }
+
+      // Public transport group
+      if (publicRoute) {
+        transportHtml += '<div class="transport-group">';
+        transportHtml += '<div class="transport-subtitle">🚌 בתחבורה ציבורית</div>';
+        transportHtml += '<div class="transport-line">' + publicRoute + '</div>';
+        if (publicTime) {
+          transportHtml += '<div class="transport-line">⏱ זמן הגעה משוער: ' + publicTime + '</div>';
+        }
+        if (publicDirect === 'direct') {
+          transportHtml += '<span class="transport-badge transport-badge--direct">✓ קו ישיר</span>';
+        } else if (publicDirect === 'transfer') {
+          transportHtml += '<span class="transport-badge transport-badge--transfer">↺ דורש החלפה</span>';
+        }
+        transportHtml += '<a class="transport-link" href="' + moovitUrl + '" target="_blank" rel="noopener noreferrer">↗ פתיחה ב-Moovit</a>';
+        transportHtml += '</div>';
+      }
+
+      transportHtml += '</section>';
     }
-    if (t.lines) {
-      transportHtml += '<span class="branch-item__transport-line"><span aria-hidden="true">🚌</span><span>בתחבורה ציבורית: ' + t.lines + '</span></span>';
+  } else {
+    // service_area or residential: show region + location description, never transport
+    detailsHtml = '<div class="branch-item__details">';
+    if (branch.region) {
+      detailsHtml += '<span class="branch-item__address"><span aria-hidden="true">🗺</span><span>אזור: ' + branch.region + '</span></span>';
     }
-    if (t.travelTime) {
-      transportHtml += '<span class="branch-item__transport-time"><span aria-hidden="true">⏱</span><span>זמן הגעה משוער: ' + t.travelTime + '</span></span>';
+    if (branch.location_description) {
+      detailsHtml += '<span class="branch-item__address"><span>' + branch.location_description + '</span></span>';
     }
-    if (t.direct === true) {
-      transportHtml += '<span class="branch-item__transport-direct branch-item__transport-direct--yes"><span aria-hidden="true">✓</span><span>קו ישיר</span></span>';
-    } else if (t.direct === false) {
-      transportHtml += '<span class="branch-item__transport-direct"><span aria-hidden="true">↺</span><span>דורש החלפה</span></span>';
-    }
-    transportHtml += '</div>';
+    detailsHtml += '</div>';
   }
 
   li.innerHTML = nameHtml + detailsHtml + transportHtml;
-
   branchesList.appendChild(li);
 });
 
@@ -118,7 +167,7 @@ document.getElementById('share-btn').addEventListener('click', function() {
   if (navigator.share) {
     navigator.share({
       title: fw.name,
-      text:  fw.fit,
+      text:  fw.short_description,
       url:   window.location.href
     }).catch(function() {
       // User cancelled or share failed – do nothing

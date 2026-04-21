@@ -5,125 +5,90 @@
 const frameworks = [
   {
     id: 1,
-    name: 'מרכז תעסוקה "יצירה בקהילה"',
+    name: 'מרכז תעסוקה יצירה',
     category: 'תעסוקה',
     frameworkType: 'מפעל מוגן',
     provider: 'עמותת שיקום יחד',
-    fit: 'מתאים למי שמחפש מסגרת תעסוקתית עם ליווי צמוד וסביבה יציבה, ופחות מתאים למי שמעוניין בעבודה עצמאית בקהילה',
-    whatHappens: 'עבודה בסדנאות ייצור מותאמות, כגון נגרות, קרמיקה, אריזה והרכבה. התפקידים מותאמים ליכולת האישית, בליווי צוות מקצועי',
-    howItWorks: 'הגעה יומית למרכז תעסוקה קבוע, עם סדר יום מובנה ודגש על שגרה ויציבות',
-    transportSummary: 'נגישות בתחבורה ציבורית: קו ישיר, כ-15 דקות נסיעה',
-    nearestBranchLabel: 'סניף ירושלים (מומלץ, הסניף הקרוב אליך)',
+    short_description: 'מתאים לאנשים המעוניינים במסגרת תעסוקתית תומכת בסביבה מוגנת',
+    service_summary: 'כולל עבודה בסדנאות יצירה כמו נגרות וקרמיקה בליווי צוות מקצועי במסגרת קבוצתית קבועה',
+    processInfo: 'נדרש אישור ועדת סל שיקום',
+    serviceCode: '11111',
     branches: [
       {
-        name: 'ירושלים',
-        travel: 'כ-15 דקות נסיעה',
-        note: 'מומלץ, הסניף הקרוב אליך',
-        address: 'רחוב פייר קניג 7, ירושלים',
+        branch_type: 'meeting_place',
+        city: 'ירושלים',
+        region: 'ירושלים',
+        address: 'שדרות שז"ר 1, ירושלים',
         phone: '02-1234567',
-        transport: {
-          lines: 'קו 186 ממבשרת ציון',
-          travelTime: 'כ-15 דקות',
-          direct: true,
-          carTime: 'כ-8 דקות'
-        }
+        location_description: 'הפעילות מתקיימת במרכז תעסוקה בירושלים',
+        transport_summary_card: 'נגישות בתחבורה ציבורית: קו ישיר, כ־15–20 דקות נסיעה',
+        transport_details_full: 'ברכב פרטי: נסיעה של כ־15 דקות\nבתחבורה ציבורית: קו 186 ממבשרת ציון\nזמן הגעה משוער: כ־15–20 דקות\nקו ישיר',
+        waze_url: 'https://waze.com/ul?ll=31.7897,35.2036&navigate=yes',
+        moovit_url: 'moovit://directions?dest_lat=31.7897&dest_lon=35.2036&dest_name=שדרות שז"ר 1, ירושלים&orig_lat=31.8014&orig_lon=35.1506&orig_name=מבשרת ציון&auto_run=true&partner_id=shikum_demo'
       },
       {
-        name: 'תל אביב',
-        travel: 'כ-50–60 דקות נסיעה',
-        note: '',
+        branch_type: 'meeting_place',
+        city: 'תל אביב',
+        region: 'תל אביב',
         address: 'שדרות הרצל 23, תל אביב',
         phone: '03-7654321',
-        transport: {
-          lines: 'קו 400 לתחנה המרכזית + קו עירוני',
-          travelTime: 'כ-50–60 דקות',
-          direct: false,
-          carTime: 'כ-45 דקות'
-        }
+        location_description: 'הפעילות מתקיימת במרכז תעסוקה בתל אביב',
+        transport_summary_card: 'נגישות בתחבורה ציבורית: דורש החלפה, כ־50–60 דקות נסיעה',
+        transport_details_full: 'ברכב פרטי: כ־45 דקות נסיעה\nבתחבורה ציבורית: קו 480 ממבשרת ציון לתל אביב + קו עירוני\nזמן הגעה משוער: כ־50–60 דקות\nדורש החלפה',
+        waze_url: 'https://waze.com/ul?ll=32.0656,34.7773&navigate=yes',
+        moovit_url: 'moovit://directions?dest_lat=32.0656&dest_lon=34.7773&dest_name=שדרות הרצל 23, תל אביב&orig_lat=31.8014&orig_lon=35.1506&orig_name=מבשרת ציון&auto_run=true&partner_id=shikum_demo'
       }
-    ],
-    processInfo: 'נדרש אישור ועדת סל שיקום',
-    serviceCode: '11111'
+    ]
   },
   {
     id: 2,
     name: 'עובדים בקהילה',
     category: 'תעסוקה',
     frameworkType: 'תעסוקה נתמכת',
-    provider: 'עמותת נתיב לעבודה',
-    fit: 'מתאים למי שמעוניין להשתלב בעבודה רגילה בקהילה, עם ליווי הדרגתי ופחות צורך במסגרת קבועה',
-    whatHappens: 'עבודה במקומות כמו חנויות, משרדים ומסעדות, בליווי מדריך תעסוקה המסייע בהשתלבות ובהתמדה',
-    howItWorks: 'השמה בעבודה בשוק החופשי, עם פגישות ליווי תקופתיות והתאמה אישית',
-    transportSummary: 'נגישות בתחבורה ציבורית: משתנה לפי מקום העבודה',
-    nearestBranchLabel: 'ליווי לפי אזור מגורים',
+    provider: 'נתיב לעבודה',
+    short_description: 'מתאים לאנשים המעוניינים להשתלב בשוק העבודה הפתוח עם ליווי מקצועי',
+    service_summary: 'כולל השמה בעבודה רגילה בשוק החופשי וליווי אישי של מדריך תעסוקתי לאורך זמן',
+    processInfo: 'נדרש אישור ועדת סל שיקום',
+    serviceCode: '22222',
     branches: [
       {
-        name: 'ירושלים',
-        travel: '',
-        note: 'ליווי לפי אזור מגורים',
-        address: 'רחוב יפו 90, ירושלים',
-        phone: '02-2345678',
-        transport: {
-          lines: 'משתנה לפי מקום העבודה שיוקצה',
-          travelTime: 'משתנה',
-          direct: null
-        }
+        branch_type: 'service_area',
+        city: 'ירושלים',
+        region: 'ירושלים',
+        location_description: 'פועל באזור ירושלים; המפגשים מתקיימים בבית המשתמש או במקום העבודה'
       },
       {
-        name: 'תל אביב',
-        travel: '',
-        note: 'ליווי לפי אזור מגורים',
-        address: 'שדרות רוטשילד 12, תל אביב',
-        phone: '03-3456789',
-        transport: {
-          lines: 'משתנה לפי מקום העבודה שיוקצה',
-          travelTime: 'משתנה',
-          direct: null
-        }
+        branch_type: 'service_area',
+        city: 'חיפה',
+        region: 'חיפה',
+        location_description: 'פועל באזור חיפה; המפגשים מתקיימים בבית המשתמש, בקהילה או במקום העבודה'
       }
-    ],
-    processInfo: 'נדרש אישור ועדת סל שיקום',
-    serviceCode: '22222'
+    ]
   },
   {
     id: 3,
-    name: 'בית בקהילה',
+    name: 'דיור מוגן – דלת לעצמאות',
     category: 'דיור',
     frameworkType: 'דיור מוגן',
-    provider: 'עמותת חיים עצמאיים',
-    fit: 'מתאים למי שמתגורר או יכול להתגורר בדירה עצמאית, אך זקוק לליווי חלקי בניהול היומיומי',
-    whatHappens: 'ניהול משק בית, התנהלות כלכלית ותיאום שירותים רפואיים וחברתיים, בליווי מדריך שיקום',
-    howItWorks: 'ביקורי צוות מספר פעמים בשבוע בבית, בהתאם לצורך',
-    transportSummary: 'הליווי מגיע אליכם הביתה',
-    nearestBranchLabel: 'הליווי מתבצע בבית המשתמש',
+    provider: 'דלת לעצמאות',
+    short_description: 'מתאים לאנשים המעוניינים לגור בקהילה עם ליווי שיקומי',
+    service_summary: 'כולל מגורים בדירה עצמאית בליווי צוות שיקומי המסייע בהתנהלות יומיומית ושילוב בקהילה',
+    processInfo: 'נדרש אישור ועדת סל שיקום',
+    serviceCode: '33333',
     branches: [
       {
-        name: 'ירושלים',
-        travel: '',
-        note: 'הליווי מתבצע בבית',
-        address: 'שירות לאזור ירושלים',
-        phone: '02-4567890',
-        transport: null
+        branch_type: 'residential',
+        city: 'ירושלים',
+        region: 'ירושלים',
+        location_description: 'מסגרת מגורים בעיר ירושלים; הכתובת המדויקת אינה מפורסמת'
       },
       {
-        name: 'מודיעין',
-        travel: '',
-        note: 'הליווי מתבצע בבית',
-        address: 'שירות לאזור מודיעין',
-        phone: '08-5678901',
-        transport: null
-      },
-      {
-        name: 'ראשון לציון',
-        travel: '',
-        note: 'הליווי מתבצע בבית',
-        address: 'שירות לאזור ראשון לציון',
-        phone: '03-6789012',
-        transport: null
+        branch_type: 'residential',
+        city: 'נתניה',
+        region: 'מרכז',
+        location_description: 'מסגרת מגורים באזור השרון; הכתובת המדויקת אינה מפורסמת'
       }
-    ],
-    processInfo: 'נדרש אישור ועדת סל שיקום',
-    serviceCode: '33333'
+    ]
   }
 ];
 
@@ -163,6 +128,7 @@ const locationSuggestions = [
 
 const state = {
   searchQuery:        '',
+  locationQuery:      localStorage.getItem('userLocation') || '',
   selectedCategories: [],
   selectedFrameworksByCategory: {},
   selectedIds:        []
@@ -289,7 +255,7 @@ function getFilteredFrameworks() {
     // Word-based search: every word in query must appear somewhere
     if (state.searchQuery) {
       const words = state.searchQuery.split(/\s+/);
-      const hay   = fw.name + ' ' + fw.fit + ' ' + fw.frameworkType + ' ' + fw.category;
+      const hay   = fw.name + ' ' + fw.short_description + ' ' + fw.frameworkType + ' ' + fw.category;
       const allMatch = words.every(function(w) { return hay.includes(w); });
       if (!allMatch) return false;
     }
@@ -316,6 +282,30 @@ function getFilteredFrameworks() {
 
 function buildCard(fw) {
   const isSelected = state.selectedIds.includes(fw.id);
+  const hasLocation = state.locationQuery.length > 0;
+  const firstBranch = fw.branches[0];
+  const isMeetingPlace = firstBranch.branch_type === 'meeting_place';
+
+  // Build location/transport block based on whether user entered a location
+  var branchHtml = '';
+  if (hasLocation) {
+    // Show recommended branch and transport (transport only for meeting_place)
+    branchHtml += '<p class="card__branch">📍 ' + firstBranch.city + ' (הסניף הקרוב אליך)</p>';
+    if (isMeetingPlace && firstBranch.transport_summary_card) {
+      branchHtml += '<p class="card__transport">🚌 ' + firstBranch.transport_summary_card + '</p>';
+    } else if (!isMeetingPlace && firstBranch.location_description) {
+      branchHtml += '<p class="card__transport">' + firstBranch.location_description + '</p>';
+    }
+  } else {
+    // No location: show cities (meeting_place) or location_description, no transport
+    if (isMeetingPlace) {
+      var cities = fw.branches.map(function(b) { return b.city; });
+      var uniqueCities = cities.filter(function(c, i) { return cities.indexOf(c) === i; });
+      branchHtml += '<p class="card__branch">📍 ' + uniqueCities.join(', ') + '</p>';
+    } else {
+      branchHtml += '<p class="card__branch">📍 ' + (firstBranch.location_description || firstBranch.city) + '</p>';
+    }
+  }
 
   const card = document.createElement('article');
   card.className = 'card';
@@ -338,10 +328,10 @@ function buildCard(fw) {
       <span class="card__meta-item">${fw.provider}</span>
     </p>
 
-    <p class="card__description">${fw.fit}</p>
+    <p class="card__description"><strong>למי זה מתאים:</strong> ${fw.short_description}</p>
+    <p class="card__description"><strong>תיאור השירות:</strong> ${fw.service_summary}</p>
 
-    <p class="card__branch">📍 ${fw.nearestBranchLabel}</p>
-    <p class="card__transport">🚌 ${fw.transportSummary}</p>
+    ${branchHtml}
 
     <div class="card__compare-row">
       <label>
@@ -531,6 +521,9 @@ searchInput.addEventListener('input', function() {
 
 locationInput.addEventListener('input', function() {
   const typed = this.value.trim();
+  state.locationQuery = typed;
+  localStorage.setItem('userLocation', typed);
+
   if (!typed) { closeSuggestions(); return; }
 
   const matches = locationSuggestions.filter(function(s) { return s.includes(typed); });
@@ -544,6 +537,8 @@ locationInput.addEventListener('input', function() {
     item.textContent = match;
     item.addEventListener('click', function() {
       locationInput.value = match;
+      state.locationQuery = match;
+      localStorage.setItem('userLocation', match);
       closeSuggestions();
     });
     suggestionsList.appendChild(item);
@@ -571,4 +566,7 @@ function closeSuggestions() {
    ============================================================ */
 
 initCategoryChips();
+if (state.locationQuery) {
+  locationInput.value = state.locationQuery;
+}
 renderCards();
